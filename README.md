@@ -6,7 +6,7 @@ The available components are:
 1. *HDFS*:
 
    * *namenode*
-   * *dtanode*
+   * *datanode*
    
 1. *YARN*:
    
@@ -29,6 +29,7 @@ variable groups:
 1. `YARN_CONF`: affects `/etc/hadoop/yarn-site.xml`
 1. `HTTPFS_CONF`: affects `/etc/hadoop/httpfs-site.xml`
 1. `KMS_CONF`: affects `/etc/hadoop/KMS-site.xml` 
+1. `MAPRED_CONF`: affects `/etc/hadoop/mapred-site.xml` 
 
 *Hadoop* properties by setting an environment variable with the
 appropriated prefix in the form `<PREFIX>_<PROPERTY>`.
@@ -122,7 +123,7 @@ Mandatory configuration:
 *Docker-compose* template:
 
     namenode:
-      image: uhopper/hadoop-namenode
+      image: nulloranje/hadoop-namenode
       hostname: namenode
       container_name: namenode
       domainname: hadoop
@@ -151,7 +152,7 @@ Mandatory configuration:
 *Docker-compose* template:
 
     datanode1:
-      image: uhopper/hadoop-datanode
+      image: nulloranje/hadoop-datanode
       hostname: datanode1
       container_name: datanode1
       domainname: hadoop
@@ -174,7 +175,7 @@ Mandatory configuration:
 *Docker-compose* template:
 
     resourcemanager:
-      image: uhopper/hadoop-resourcemanager
+      image: nulloranje/hadoop-resourcemanager
       hostname: resourcemanager
       container_name: resourcemanager
       domainname: hadoop
@@ -200,7 +201,7 @@ Mandatory configuration:
 *Docker-compose* template:
 
     nodemanager1:
-      image: uhopper/hadoop-nodemanager
+      image: nulloranje/hadoop-nodemanager
       hostname: nodemanager1
       container_name: nodemanager1
       domainname: hadoop
@@ -219,7 +220,7 @@ Spark environment configured for the *hadoop* cluster.
 
 The image itself doesn't specify any command since no service are
 exposed. You are expected to specify it yourself via `docker run
-uhopper/hadoop-spark <command>`.
+nulloranje/hadoop-spark <command>`.
 
 A common approach is to keep the container alive using `tail -f
 /var/log/dmesg` as command and then connect to it via `docker exec -ti
@@ -233,7 +234,7 @@ Mandatory configuration:
 *Docker-compose* template:
 
     spark:
-      image: uhopper/hadoop-spark
+      image: nulloranje/hadoop-spark
       hostname: spark
       container_name: spark
       domainname: hadoop
