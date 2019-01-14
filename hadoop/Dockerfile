@@ -3,7 +3,7 @@ FROM debian:jessie-backports
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -t jessie-backports --no-install-recommends  openjdk-8-jre-headless ca-certificates-java \
     && rm -rf /var/lib/apt/lists/*
-    
+
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl
@@ -40,9 +40,10 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
     0445B7BFC4515847C157ECD16BA72FF1C99785DE \
     B74F188889D159F3D7E64A7F348C6D7A0DCED714 \
     4A6AC5C675B6155682729C9E08D51A0A7501105C \
-    8B44A05C308955D191956559A5CEE20A90348D47 
+    8B44A05C308955D191956559A5CEE20A90348D47 \
+    5851C913A22D23E69B47FA66B5AD1CE552293533
 
-ENV HADOOP_VERSION 2.8.1
+ENV HADOOP_VERSION 2.8.5
 ENV HADOOP_URL https://www.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 RUN curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz \
     && curl -fSL "$HADOOP_URL.asc" -o /tmp/hadoop.tar.gz.asc \

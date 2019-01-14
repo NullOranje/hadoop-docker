@@ -1,4 +1,4 @@
-FROM uhopper/hadoop:2.8.1
+FROM nulloranje/hadoop:2.8.5
 
 
 ENV YARN_CONF_yarn_timeline___service_leveldb___timeline___store_path=/hadoop/yarn/timeline

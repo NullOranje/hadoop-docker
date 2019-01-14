@@ -1,4 +1,4 @@
-FROM uhopper/hadoop:2.8.1
+FROM nulloranje/hadoop:2.8.5
 
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
